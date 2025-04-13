@@ -1,0 +1,3 @@
+[submodule "cbp2025"]
+	path = cbp2025
+	url = git@github.com:ramisheikh/cbp2025.git
