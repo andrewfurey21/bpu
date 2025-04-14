@@ -3,7 +3,7 @@
 #include <array>
 #include <vector>
 
-#include "branch_predictor.h"
+#include "base_predictor.h"
 
 #define GHIST_SIZE 128
 #define USEFUL_COUNTER_SIZE 1
@@ -25,7 +25,7 @@ typedef std::vector<table_entry> table;
 class TAGE : public BranchPredictor {
 public:
     bool predict(uint64_t PC) const override {
-        return true;
+        return false;
     }
 
     void history_update(uint64_t PC, bool taken) override {

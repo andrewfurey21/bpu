@@ -28,7 +28,7 @@ LIBS = -lcbp -lz
 FLAGS = -std=c++17 -L./lib $(LIBS) $(OPT)
 CPPFLAGS = -std=c++17 $(OPT)
 
-PARENT_DIR=..
+PREDICTORS?DIR=../predictors/
 INCLUDES=-I$(PARENT_DIR)
 
 OBJ = cond_branch_predictor_interface.o my_cond_branch_predictor.o

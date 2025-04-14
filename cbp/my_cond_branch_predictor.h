@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <unordered_map>
 
-#include "../tage.h"
+#include "../predictors/tage.h"
 
 class Predictor {
   TAGE predictor;

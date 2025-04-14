@@ -1,4 +1,9 @@
-# TAGE branch predictor
+# Branch Predictors
 
-An implementation of the TAGE branch predictor that runs on the [Championship Branch Prediction simulator](https://ericrotenberg.wordpress.ncsu.edu/cbp2025/)
+This repo contains implementations of different branch predictors. It uses the [Championship Branch Prediction simulator](https://ericrotenberg.wordpress.ncsu.edu/cbp2025/) to gather data on how well it predicts conditional branches.
+
+## Predictors
+
+- [ ] TAGE
+- [ ] Perceptron
 

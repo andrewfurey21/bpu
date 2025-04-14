@@ -1,4 +1,4 @@
-mkdir -p data
+mkdir -p traces
 
 wget "https://drive.google.com/file/d/15lDyv-PH_bfnPXweIHwS97ZATX_T94hj/view?usp=drive_link" -O "traces/infra.tar.xz"
 wget "https://drive.google.com/file/d/18P3ndXZKSwpxNVjoUB7TWUIq0PJfSljf/view?usp=drive_link" -O "traces/web.tar.xz"
