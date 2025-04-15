@@ -4,6 +4,6 @@ This repo contains implementations of different branch predictors. It uses the [
 
 ## Predictors
 
-- [ ] TAGE
-- [ ] Perceptron
+- [ ] [TAGE](https://inria.hal.science/hal-03408381/document)
+- [x] [Perceptron](https://www.cs.utexas.edu/~lin/papers/hpca01.pdf)
 
