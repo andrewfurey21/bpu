@@ -13,6 +13,8 @@
 #define GHR_LENGTH 64
 typedef std::bitset<GHR_LENGTH> GHR_t;
 
+// taken = 1, not taken = -1
+
 class BranchPredictor {
 public:
   bool predict(uint64_t pc, uint64_t seq_no, uint8_t piece) {
@@ -34,11 +36,11 @@ public:
 
   void history_update(uint64_t pc, bool taken) {
     ghr <<= 1;
-    ghr[0] = ghr[0] | taken;
+    ghr[0] = taken;
   };
 
 protected:
-  virtual std::pair<GHR_t, int32_t> predict_branch(uint64_t pc, GHR_t ghr) = 0;
+  virtual std::pair<GHR_t, int32_t> predict_branch(uint64_t pc, GHR_t ghr) const = 0;
   virtual void correct_state(uint64_t pc, GHR_t ghr, int32_t prediction,
                              bool actual) = 0;
 

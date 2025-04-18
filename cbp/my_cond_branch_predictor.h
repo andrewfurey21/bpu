@@ -6,10 +6,12 @@
 #include <stdlib.h>
 #include <unordered_map>
 
-#include "../predictors/perceptron.h"
+// #include "../predictors/perceptron.h"
+// #include "../predictors/tage.h"
+#include "../predictors/gshare.h"
 
 class Predictor {
-  Perceptron predictor;
+  Gshare predictor;
 
 public:
   Predictor(void) {}

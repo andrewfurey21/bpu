@@ -18,8 +18,14 @@
 #define INDEX_SIZE_BITS 10
 #define NUM_OUTPUT_BITS 16
 #define NUM_WEIGHT_BITS 8
-#define THRESHOLD ((int32_t)floor(1.93f * GHR_LENGTH + 14))
 
+/*
+ * Memory =
+ *          (2^(index size in bits)) * size of entry
+ * Size of entry = GHR size * size of weights + size of output
+*/
+
+#define THRESHOLD ((int32_t)floor(1.93f * GHR_LENGTH + 14))
 #define NUM_OF_WEIGHTS (GHR_LENGTH + 1)
 #define TABLE_SIZE (1 << INDEX_SIZE_BITS)
 #define WEIGHT_TYPE int64_t
@@ -29,8 +35,10 @@
 #define MIN_OUTPUT (WEIGHT_TYPE)(-MAX_OUTPUT - 1)
 
 class Perceptron : public BranchPredictor {
+public:
+  Perceptron(void) : table({0}) {}
 
-  std::pair<GHR_t, int32_t> predict_branch(uint64_t pc, GHR_t ghr) override {
+  std::pair<GHR_t, int32_t> predict_branch(uint64_t pc, GHR_t ghr) const override {
     uint64_t index = hash(pc, ghr);
     int32_t prediction = 0;
     prediction += table[index][0];
@@ -45,11 +53,8 @@ class Perceptron : public BranchPredictor {
     return std::make_pair(ghr, prediction);
   }
 
-public:
-  Perceptron(void) : table({0}) {}
   void correct_state(uint64_t pc, GHR_t ghr, int32_t prediction,
                      bool actual) override {
-
     if ((prediction >= 0) != actual || abs(prediction) <= THRESHOLD) {
       int index = hash(pc, ghr);
       int64_t sign_actual = actual ? 1 : -1;
